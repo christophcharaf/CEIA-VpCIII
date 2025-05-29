@@ -129,7 +129,7 @@ class Trainer():
 	
 				train_mask = train_mask.to(self.device)
 				train_input=train_input.to(self.device)
-				with torch.autocast(device_type='cuda', dtype=dtype, enabled=use_amp):
+				with torch.autocast(device_type='cpu', dtype=dtype, enabled=use_amp):
 					output = model(train_input)
 					loss = self.loss_fn(output, train_mask)
 				# if isinstance(dtype, type(torch.float16)):
